@@ -14,7 +14,7 @@ namespace Foundation\Exception;
 
 /**
  * Used for marking exceptions that should not be logged.
- * 
+ *
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
 interface DontLogInterface
