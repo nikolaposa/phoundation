@@ -18,11 +18,14 @@ matrix:
   allow_failures:
     - php: hhvm
 
+before_install:
+  - phpenv config-rm xdebug.ini
+
 install:
   - travis_retry composer install --no-interaction
 
 script:
-  - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then ./vendor/bin/phpunit --disallow-test-output --report-useless-tests --coverage-clover ./clover.xml ; else ./vendor/bin/phpunit --disallow-test-output ; fi
+  - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then ./vendor/bin/phpunit --disallow-test-output --coverage-clover ./clover.xml ; else ./vendor/bin/phpunit --disallow-test-output ; fi
   - if [[ $EXECUTE_CS_CHECK == 'true' ]]; then ./vendor/bin/php-cs-fixer fix -v --diff --dry-run ; fi
 
 after_script:
