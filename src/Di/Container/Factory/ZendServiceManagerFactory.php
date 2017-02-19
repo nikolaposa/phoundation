@@ -30,6 +30,6 @@ final class ZendServiceManagerFactory extends AbstractFactory
 
         $container->configure($this->getDiConfig());
 
-        $container->setService(self::CONFIG_SERVICE_NAME, $this->getConfig());
+        $container->setService($this->getConfigServiceName(), $this->getConfig());
     }
 }

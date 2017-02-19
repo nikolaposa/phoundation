@@ -36,7 +36,7 @@ final class PimpleFactory extends AbstractFactory
         $this->setFactories();
         $this->setInvokables();
 
-        $this->container[self::CONFIG_SERVICE_NAME] = $this->getConfig();
+        $this->container[$this->getConfigServiceName()] = $this->getConfig();
     }
 
     private function setFactories()

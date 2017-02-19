@@ -19,8 +19,8 @@ use Foundation\Config\Config;
  */
 interface FactoryInterface
 {
-    const CONFIG_KEY = 'di';
-    const CONFIG_SERVICE_NAME = 'config';
+    const DEFAULT_DI_CONFIG_KEY = 'di';
+    const DEFAULT_CONFIG_SERVICE_NAME = 'config';
 
-    public function __invoke(Config $config);
+    public function __invoke(Config $config, string $diConfigKey = self::DEFAULT_DI_CONFIG_KEY, string $configServiceName = self::DEFAULT_CONFIG_SERVICE_NAME);
 }

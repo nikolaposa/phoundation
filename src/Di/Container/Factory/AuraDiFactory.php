@@ -37,7 +37,7 @@ final class AuraDiFactory extends AbstractFactory
         $this->setFactories();
         $this->setInvokables();
 
-        $this->container->set(self::CONFIG_SERVICE_NAME, $this->getConfig());
+        $this->container->set($this->getConfigServiceName(), $this->getConfig());
     }
 
     private function setFactories()

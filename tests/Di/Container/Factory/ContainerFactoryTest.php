@@ -37,7 +37,7 @@ abstract class ContainerFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_puts_config_into_container()
+    public function it_puts_config_into_container_under_default_name()
     {
         $config = Config::fromArray([
             'db' => [
@@ -54,6 +54,29 @@ abstract class ContainerFactoryTest extends TestCase
          */
         $container = $this->factory->__invoke($config);
 
-        $this->assertSame($config, $container->get(FactoryInterface::CONFIG_SERVICE_NAME));
+        $this->assertSame($config, $container->get(FactoryInterface::DEFAULT_CONFIG_SERVICE_NAME));
+    }
+
+    /**
+     * @test
+     */
+    public function it_puts_config_into_container_under_specified_name()
+    {
+        $config = Config::fromArray([
+            'db' => [
+                'driver' => 'pdo_mysql',
+                'host' => 'localhost',
+                'user' => 'root',
+                'password' => 'secret',
+                'dbname' => 'test',
+            ],
+        ]);
+
+        /**
+         * @var $container ContainerInterface
+         */
+        $container = $this->factory->__invoke($config, FactoryInterface::DEFAULT_DI_CONFIG_KEY, 'AppConfig');
+
+        $this->assertSame($config, $container->get('AppConfig'));
     }
 }

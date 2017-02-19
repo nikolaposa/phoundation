@@ -24,9 +24,21 @@ abstract class AbstractFactory implements FactoryInterface
      */
     private $config;
 
-    public function __invoke(Config $config)
+    /**
+     * @var string
+     */
+    private $diConfigKey;
+
+    /**
+     * @var string
+     */
+    private $configServiceName;
+
+    public function __invoke(Config $config, string $diConfigKey = self::DEFAULT_DI_CONFIG_KEY, string $configServiceName = self::DEFAULT_CONFIG_SERVICE_NAME)
     {
         $this->config = $config;
+        $this->diConfigKey = $diConfigKey;
+        $this->configServiceName = $configServiceName;
 
         $container = $this->createContainer();
 
@@ -44,16 +56,27 @@ abstract class AbstractFactory implements FactoryInterface
         return $this->config;
     }
 
+    final protected function getConfigServiceName()
+    {
+        return $this->configServiceName;
+    }
+
     final protected function getDiConfig(string $type = null) : array
     {
-        if (null === $type) {
-            return $this->config[self::CONFIG_KEY] ?? [];
-        }
-
-        if (empty($this->config[self::CONFIG_KEY][$type]) || !is_array($this->config[self::CONFIG_KEY][$type])) {
+        if (empty($this->config[$this->diConfigKey]) || !is_array($this->config[$this->diConfigKey])) {
             return [];
         }
 
-        return $this->config[self::CONFIG_KEY][$type];
+        $diConfig = $this->config[$this->diConfigKey];
+
+        if (null === $type) {
+            return $diConfig;
+        }
+
+        if (empty($diConfig[$type]) || !is_array($diConfig[$type])) {
+            return [];
+        }
+
+        return $diConfig[$type];
     }
 }
