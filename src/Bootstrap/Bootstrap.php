@@ -76,7 +76,7 @@ class Bootstrap
 
     protected function setPhpSettings()
     {
-        $phpSettings = (array) $this->config['php_settings'] ?? [];
+        $phpSettings = (array) ($this->config['php_settings'] ?? []);
 
         foreach ($phpSettings as $key => $value) {
             ini_set($key, $value);
