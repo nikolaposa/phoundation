@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Foundation\Bootstrap;
 
+use Foundation\Config\Config;
 use Psr\Container\ContainerInterface;
 use Foundation\Di\Container\Factory\ZendServiceManagerFactory;
 use Foundation\Di\Container\Factory\AuraDiFactory;
@@ -34,6 +35,16 @@ class Bootstrap
     protected $diContainerFactory;
 
     /**
+     * @var Config
+     */
+    protected $config;
+
+    /**
+     * @var ContainerInterface
+     */
+    protected $diContainer;
+
+    /**
      * @var array
      */
     protected static $diContainerFactories = [
@@ -53,15 +64,31 @@ class Bootstrap
         $configLoader = $this->configLoader;
         $diContainerFactory = $this->diContainerFactory;
 
-        $config = $configLoader();
+        $this->config = $configLoader();
 
-        /* @var $diContainer ContainerInterface */
-        $diContainer = $diContainerFactory($config);
+        $this->diContainer = $diContainerFactory($this->config);
 
-        if ($diContainer->has(RunnerInterface::class)) {
-            $diContainer->get(RunnerInterface::class)->register();
+        $this->setPhpSettings();
+        $this->registerErrorHandler();
+
+        return $this->diContainer;
+    }
+
+    protected function setPhpSettings()
+    {
+        $phpSettings = (array) $this->config['php_settings'] ?? [];
+
+        foreach ($phpSettings as $key => $value) {
+            ini_set($key, $value);
+        }
+    }
+
+    protected function registerErrorHandler()
+    {
+        if (!$this->diContainer->has(RunnerInterface::class)) {
+            return;
         }
 
-        return $diContainer;
+        $this->diContainer->get(RunnerInterface::class)->register();
     }
 }
