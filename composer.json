@@ -1,5 +1,5 @@
 {
-    "name": "nikolaposa/php-app-foundation",
+    "name": "nikolaposa/foundation",
     "description": "Framework-agnostic basis for bootstrapping PHP applications",
     "type": "library",
     "license": "MIT",

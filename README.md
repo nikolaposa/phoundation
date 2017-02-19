@@ -1,9 +1,9 @@
 # Foundation
 
-[![Build Status](https://travis-ci.org/nikolaposa/php-app-foundation.svg?branch=master)](https://travis-ci.org/nikolaposa/php-app-foundation)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nikolaposa/php-app-foundation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nikolaposa/php-app-foundation/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/nikolaposa/php-app-foundation/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/nikolaposa/php-app-foundation/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/nikolaposa/php-app-foundation/v/stable)](https://packagist.org/packages/nikolaposa/php-app-foundation)
+[![Build Status](https://travis-ci.org/nikolaposa/foundation.svg?branch=master)](https://travis-ci.org/nikolaposa/foundation)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nikolaposa/foundation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nikolaposa/foundation/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/nikolaposa/foundation/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/nikolaposa/foundation/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/nikolaposa/foundation/v/stable)](https://packagist.org/packages/nikolaposa/foundation)
 [![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg)](https://github.com/php-pds/skeleton)
 
 Framework-agnostic basis for bootstrapping PHP applications. Provides components that facilitate tasks such as configuration loading, DI container initialization and registering central error handler.
@@ -16,7 +16,7 @@ The preferred method of installation is via [Composer](http://getcomposer.org/).
 command to install the latest version of a package and add it to your project's `composer.json`:
 
 ```bash
-composer require nikolaposa/php-app-foundation
+composer require nikolaposa/foundation
 ```
 
 ## Usage
