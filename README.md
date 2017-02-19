@@ -12,8 +12,7 @@ Used as a core dependency of the PHP Application Skeleton project.
 
 ## Installation
 
-The preferred method of installation is via [Composer](http://getcomposer.org/). Run the following
-command to install the latest version of a package and add it to your project's `composer.json`:
+The preferred method of installation is via [Composer](http://getcomposer.org/). Run the following command to install the latest version of a package and add it to your project's `composer.json`:
 
 ```bash
 composer require nikolaposa/foundation
