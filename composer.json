@@ -1,6 +1,6 @@
 {
     "name": "nikolaposa/php-app-foundation",
-    "description": "Framework-agnostic basis for PHP applications",
+    "description": "Framework-agnostic basis for bootstrapping PHP applications",
     "type": "library",
     "license": "MIT",
     "keywords": [

@@ -6,7 +6,7 @@
 [![Latest Stable Version](https://poser.pugx.org/nikolaposa/php-app-foundation/v/stable)](https://packagist.org/packages/nikolaposa/php-app-foundation)
 [![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg)](https://github.com/php-pds/skeleton)
 
-Framework-agnostic basis for PHP applications. Provides components that facilitate bootstrapping of the application which involves configuration loading, DI container initialization and registering central error handler.
+Framework-agnostic basis for bootstrapping PHP applications. Provides components that facilitate tasks such as configuration loading, DI container initialization and registering central error handler.
 
 Used as a core dependency of the PHP Application Skeleton project.
 
