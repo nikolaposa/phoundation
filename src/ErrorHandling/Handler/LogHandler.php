@@ -14,7 +14,6 @@ namespace Foundation\ErrorHandling\Handler;
 
 use Psr\Log\LoggerInterface;
 use Throwable;
-use ErrorException;
 use Foundation\Exception\DontLogInterface;
 use Psr\Log\LogLevel;
 
@@ -50,7 +49,7 @@ final class LogHandler
 
     private function resolveLogLevel(Throwable $e)
     {
-        if ($e instanceof ErrorException) {
+        if ($e instanceof \ErrorException) {
             switch ($e->getSeverity()) {
                 case E_ERROR:
                 case E_RECOVERABLE_ERROR:
