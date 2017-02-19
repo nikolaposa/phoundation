@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Foundation;
+namespace Foundation\Bootstrap;
 
 use Psr\Container\ContainerInterface;
 use Foundation\Di\Container\Factory\ZendServiceManagerFactory;

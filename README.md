@@ -22,7 +22,7 @@ composer require nikolaposa/foundation
 
 ```php
 
-use Foundation\Bootstrap;
+use Foundation\Bootstrap\Bootstrap;
 use Foundation\Config\Loader\GlobConfigLoader;
 use Foundation\Di\Container\Factory\ZendServiceManagerFactory;
 

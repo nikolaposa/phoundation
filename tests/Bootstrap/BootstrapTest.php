@@ -10,10 +10,10 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Tests;
+namespace Foundation\Bootstrap\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Foundation\Bootstrap;
+use Foundation\Bootstrap\Bootstrap;
 use Foundation\Config\Loader\GlobConfigLoader;
 use Foundation\Di\Container\Factory\ZendServiceManagerFactory;
 use Zend\ServiceManager\ServiceManager;
