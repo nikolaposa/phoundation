@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Di\Container\Factory;
+namespace Phoundation\Di\Container\Factory;
 
-use Foundation\Config\Config;
+use Phoundation\Config\Config;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>

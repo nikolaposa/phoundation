@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the PHP App Foundation package.
+ * This file is part of the Phoundation package.
  *
  * Copyright (c) Nikola Posa
  *
@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Bootstrap\Tests;
+namespace Phoundation\Bootstrap\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Foundation\Bootstrap\Bootstrap;
-use Foundation\Config\Loader\GlobConfigLoader;
-use Foundation\Di\Container\Factory\ZendServiceManagerFactory;
+use Phoundation\Bootstrap\Bootstrap;
+use Phoundation\Config\Loader\GlobConfigLoader;
+use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
 use Zend\ServiceManager\ServiceManager;
 
 /**

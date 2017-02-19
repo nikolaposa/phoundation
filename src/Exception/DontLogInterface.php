@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Exception;
+namespace Phoundation\Exception;
 
 /**
  * Used for marking exceptions that should not be logged.

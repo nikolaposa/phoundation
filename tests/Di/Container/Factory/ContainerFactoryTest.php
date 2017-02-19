@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the PHP App Foundation package.
+ * This file is part of the Phoundation package.
  *
  * Copyright (c) Nikola Posa
  *
@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Tests\Di\Container\Factory;
+namespace Phoundation\Tests\Di\Container\Factory;
 
 use PHPUnit\Framework\TestCase;
-use Foundation\Di\Container\Factory\FactoryInterface;
+use Phoundation\Di\Container\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
-use Foundation\Config\Config;
+use Phoundation\Config\Config;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>

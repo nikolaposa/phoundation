@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Config\Loader;
+namespace Phoundation\Config\Loader;
 
-use Foundation\Config\Config;
+use Phoundation\Config\Config;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>

@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the PHP App Foundation package.
+ * This file is part of the Phoundation package.
  *
  * Copyright (c) Nikola Posa
  *
@@ -10,14 +10,14 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Bootstrap;
+namespace Phoundation\Bootstrap;
 
-use Foundation\Config\Config;
+use Phoundation\Config\Config;
 use Psr\Container\ContainerInterface;
-use Foundation\Di\Container\Factory\ZendServiceManagerFactory;
-use Foundation\Di\Container\Factory\AuraDiFactory;
-use Foundation\Di\Container\Factory\PimpleFactory;
-use Foundation\ErrorHandling\RunnerInterface;
+use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
+use Phoundation\Di\Container\Factory\AuraDiFactory;
+use Phoundation\Di\Container\Factory\PimpleFactory;
+use Phoundation\ErrorHandling\RunnerInterface;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>

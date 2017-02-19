@@ -1,11 +1,12 @@
 {
-    "name": "nikolaposa/foundation",
+    "name": "nikolaposa/phoundation",
     "description": "Framework-agnostic basis for bootstrapping PHP applications",
     "type": "library",
     "license": "MIT",
     "keywords": [
         "application",
         "basis",
+        "foundation",
         "bootstrap",
         "config",
         "di"
@@ -32,12 +33,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Foundation\\": "src/"
+            "Phoundation\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Foundation\\Tests\\": "tests/"
+            "Phoundation\\Tests\\": "tests/"
         }
     },
     "suggest": {

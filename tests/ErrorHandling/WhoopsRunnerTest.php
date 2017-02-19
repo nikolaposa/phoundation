@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the PHP App Foundation package.
+ * This file is part of the Phoundation package.
  *
  * Copyright (c) Nikola Posa
  *
@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Tests\Config\Loader;
+namespace Phoundation\Tests\Config\Loader;
 
 use PHPUnit\Framework\TestCase;
-use Foundation\ErrorHandling\RunnerInterface;
-use Foundation\ErrorHandling\WhoopsRunner;
+use Phoundation\ErrorHandling\RunnerInterface;
+use Phoundation\ErrorHandling\WhoopsRunner;
 use Whoops\Run;
 
 /**

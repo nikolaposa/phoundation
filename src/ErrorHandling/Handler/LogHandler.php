@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the PHP App Foundation package.
+ * This file is part of the Phoundation package.
  *
  * Copyright (c) Nikola Posa
  *
@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Foundation\ErrorHandling\Handler;
+namespace Phoundation\ErrorHandling\Handler;
 
 use Psr\Log\LoggerInterface;
 use Throwable;
-use Foundation\Exception\DontLogInterface;
+use Phoundation\Exception\DontLogInterface;
 use Psr\Log\LogLevel;
 
 /**

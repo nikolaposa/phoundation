@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the PHP App Foundation package.
+ * This file is part of the Phoundation package.
  *
  * Copyright (c) Nikola Posa
  *
@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Tests\Di\Container\Factory;
+namespace Phoundation\Tests\Di\Container\Factory;
 
-use Foundation\Di\Container\Factory\PimpleFactory;
+use Phoundation\Di\Container\Factory\PimpleFactory;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>

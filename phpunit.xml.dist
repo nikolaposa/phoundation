@@ -3,7 +3,7 @@
     colors="true"
 >
     <testsuites>
-        <testsuite name="App Foundation tests">
+        <testsuite name="Phoundation tests">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

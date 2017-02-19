@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the PHP App Foundation package.
+ * This file is part of the Phoundation package.
  *
  * Copyright (c) Nikola Posa
  *
@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Foundation\Config;
+namespace Phoundation\Config;
 
 use ArrayObject;
 

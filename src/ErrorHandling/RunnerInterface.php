@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Foundation\ErrorHandling;
+namespace Phoundation\ErrorHandling;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
