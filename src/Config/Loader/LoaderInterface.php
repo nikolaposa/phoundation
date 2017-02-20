@@ -19,5 +19,5 @@ use Phoundation\Config\Config;
  */
 interface LoaderInterface
 {
-    public function __invoke() : Config;
+    public function __invoke(array $paths) : Config;
 }

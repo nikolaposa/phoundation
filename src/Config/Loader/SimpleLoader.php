@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the PHP Application Skeleton package.
+ * This file is part of the Phoundation package.
  *
  * Copyright (c) Nikola Posa
  *
@@ -17,16 +17,14 @@ use Phoundation\Config\Config;
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-final class GlobConfigLoader extends AbstractLoader
+class SimpleLoader extends AbstractLoader
 {
     public function __invoke(array $paths) : Config
     {
         $config = [];
 
-        foreach ($paths as $path) {
-            foreach (glob($path, GLOB_BRACE) as $file) {
-                $config = self::arrayMerge($config, include $file);
-            }
+        foreach ($paths as $file) {
+            $config = self::arrayMerge($config, include $file);
         }
 
         return Config::fromArray($config);

@@ -22,7 +22,7 @@ composer require nikolaposa/phoundation
 
 Bootstrapping logic of today's PHP applications typically have this form:
 
-```
+```php
 require '../vendor/autoload.php';
 
 $config = require '../config/config.php';
@@ -65,21 +65,18 @@ Component that connects these different pieces together is `Bootstrap` which is 
 
 ## Usage
 
+* index.php
+
 ```php
 
 use Phoundation\Bootstrap\Bootstrap;
-use Phoundation\Config\Loader\GlobConfigLoader;
-use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
 
-$env = getenv('APP_ENV') ?: 'local';
-$configGlobPath = sprintf('config/autoload/{{,*.}global,{,*.}%s}.php', $env);
-
-$bootstrap = new Bootstrap(
-    new GlobConfigLoader($configGlobPath),
-    new ZendServiceManagerFactory()
-);
-
-$diContainer = $bootstrap();
+$diContainer = Bootstrap::init([
+    'config_loader' => 'glob',
+    'di_container_factory' => 'zend-service-manager',
+])->run([
+    sprintf('config/autoload/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'),
+]);
 
 //...
 ```

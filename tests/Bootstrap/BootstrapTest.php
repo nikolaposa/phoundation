@@ -14,8 +14,6 @@ namespace Phoundation\Bootstrap\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Phoundation\Bootstrap\Bootstrap;
-use Phoundation\Config\Loader\GlobConfigLoader;
-use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
 use Zend\ServiceManager\ServiceManager;
 
 /**
@@ -28,12 +26,12 @@ class BootstrapTest extends TestCase
      */
     public function it_provides_di_container()
     {
-        $bootstrap = new Bootstrap(
-            new GlobConfigLoader(__DIR__ . '/TestAsset/Config/Glob/{{,*.}global,{,*.}local}.php'),
-            new ZendServiceManagerFactory()
-        );
-
-        $diContainer = $bootstrap();
+        $diContainer = Bootstrap::init([
+            'config_loader' => 'glob',
+            'di_container_factory' => 'zend-service-manager',
+        ])->run([
+            '/TestAsset/Config/Glob/{{,*.}global,{,*.}local}.php',
+        ]);
 
         $this->assertInstanceOf(ServiceManager::class, $diContainer);
     }
