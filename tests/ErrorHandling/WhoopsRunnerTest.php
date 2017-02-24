@@ -48,4 +48,24 @@ class WhoopsRunnerTest extends TestCase
 
         $this->assertCount(1, $this->whoops->getHandlers());
     }
+
+    /**
+     * @test
+     */
+    public function it_registers_error_handling()
+    {
+        $this->runner->register();
+
+        $prop = (new \ReflectionObject($this->runner))->getProperty('whoops');
+        $prop->setAccessible(true);
+        $whoops = $prop->getValue($this->runner);
+
+        $prop = (new \ReflectionObject($whoops))->getProperty('isRegistered');
+        $prop->setAccessible(true);
+        $isRegistered = $prop->getValue($whoops);
+
+        $this->assertTrue($isRegistered);
+
+        $this->runner->unregister();
+    }
 }
