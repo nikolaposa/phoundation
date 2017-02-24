@@ -61,22 +61,23 @@ abstract class AbstractFactory implements FactoryInterface
         return $this->configServiceName;
     }
 
-    final protected function getDiConfig(string $type = null) : array
+    final protected function getDiConfig() : array
     {
         if (empty($this->config[$this->diConfigKey]) || !is_array($this->config[$this->diConfigKey])) {
             return [];
         }
 
-        $diConfig = $this->config[$this->diConfigKey];
+        return $this->config[$this->diConfigKey];
+    }
 
-        if (null === $type) {
-            return $diConfig;
-        }
+    final protected function getDiConfigGroup(string $group) : array
+    {
+        $diConfig = $this->getDiConfig();
 
-        if (empty($diConfig[$type]) || !is_array($diConfig[$type])) {
+        if (empty($diConfig[$group]) || !is_array($diConfig[$group])) {
             return [];
         }
 
-        return $diConfig[$type];
+        return $diConfig[$group];
     }
 }

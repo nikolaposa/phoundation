@@ -42,7 +42,7 @@ final class AuraDiFactory extends AbstractFactory
 
     private function setFactories()
     {
-        foreach ($this->getDiConfig('factories') as $name => $factory) {
+        foreach ($this->getDiConfigGroup('factories') as $name => $factory) {
             if (is_string($factory)) {
                 $this->container->set($name, $this->container->lazyNew($factory));
                 $this->container->set($name, $this->container->lazyGetCall($factory, '__invoke', $this->container));
@@ -55,7 +55,7 @@ final class AuraDiFactory extends AbstractFactory
 
     private function setInvokables()
     {
-        foreach ($this->getDiConfig('invokables') as $name => $className) {
+        foreach ($this->getDiConfigGroup('invokables') as $name => $className) {
             $this->container->set($name, $this->container->lazyNew($className));
         }
     }
