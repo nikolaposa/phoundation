@@ -44,7 +44,7 @@ final class AuraDiFactory extends AbstractFactory
     {
         foreach ($this->getDiConfigGroup('factories') as $name => $factory) {
             if (is_string($factory)) {
-                $this->container->set($name, $this->container->lazyNew($factory));
+                $this->container->set($factory, $this->container->lazyNew($factory));
                 $this->container->set($name, $this->container->lazyGetCall($factory, '__invoke', $this->container));
                 continue;
             }

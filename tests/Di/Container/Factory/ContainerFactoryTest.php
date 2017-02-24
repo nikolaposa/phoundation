@@ -17,6 +17,7 @@ use Phoundation\Di\Container\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;
 use Phoundation\Config\Config;
 use Phoundation\Tests\TestAsset\Service\InMemoryLogger;
+use Phoundation\Tests\TestAsset\Service\InMemoryLoggerFactory;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
@@ -56,6 +57,27 @@ abstract class ContainerFactoryTest extends TestCase
         $container = $this->factory->__invoke($config);
 
         $this->assertInstanceOf(\PDO::class, $container->get('pdo'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_registers_factory_names_from_config()
+    {
+        $config = Config::fromArray([
+            'di' => [
+                'factories' => [
+                    'logger' => InMemoryLoggerFactory::class,
+                ],
+            ],
+        ]);
+
+        /**
+         * @var $container ContainerInterface
+         */
+        $container = $this->factory->__invoke($config);
+
+        $this->assertInstanceOf(InMemoryLogger::class, $container->get('logger'));
     }
 
     /**
