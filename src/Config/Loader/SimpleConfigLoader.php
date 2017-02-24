@@ -17,7 +17,7 @@ use Phoundation\Config\Config;
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-class SimpleLoader extends AbstractLoader
+class SimpleConfigLoader extends AbstractLoader
 {
     public function __invoke(array $paths) : Config
     {

@@ -2,7 +2,7 @@
 
 return [
     'db' => [
-        'user' => 'user',
+        'user' => 'test',
         'password' => '1234',
     ],
 ];

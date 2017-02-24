@@ -28,6 +28,8 @@ abstract class AbstractLoader implements LoaderInterface
                 } else {
                     $a[$key] = $value;
                 }
+            } else {
+                $a[$key] = $value;
             }
         }
 
