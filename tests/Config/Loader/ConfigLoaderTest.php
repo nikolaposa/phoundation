@@ -12,30 +12,37 @@ declare(strict_types=1);
 
 namespace Phoundation\Tests\Config\Loader;
 
+use PHPUnit\Framework\TestCase;
 use Phoundation\Config\Loader\LoaderInterface;
-use Phoundation\Config\Loader\SimpleConfigLoader;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-class SimpleConfigLoaderTest extends ConfigLoaderTest
+abstract class ConfigLoaderTest extends TestCase
 {
-    protected function createConfigLoader() : LoaderInterface
+    /**
+     * @var LoaderInterface
+     */
+    protected $configLoader;
+
+    protected function setUp()
     {
-        return new SimpleConfigLoader();
+        $this->configLoader = $this->createConfigLoader();
     }
-    
+
+    abstract protected function createConfigLoader() : LoaderInterface;
+
     /**
      * @test
      */
-    public function it_merges_multiple_configuration_files()
+    public function it_merges_config_elements_with_numeric_keys()
     {
         $config = $this->configLoader->__invoke([
             __DIR__ . '/../../TestAsset/Config/Glob/global.php',
             __DIR__ . '/../../TestAsset/Config/Glob/local.php',
         ]);
 
-        $this->assertArrayHasKey('db', $config);
-        $this->assertEquals('test', $config['db']['user']);
+        $this->assertArrayHasKey('foo', $config);
+        $this->assertEquals(['bar', 'baz'], $config['foo']);
     }
 }

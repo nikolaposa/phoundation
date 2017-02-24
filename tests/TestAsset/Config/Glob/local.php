@@ -5,4 +5,7 @@ return [
         'user' => 'test',
         'password' => '1234',
     ],
+    'foo' => [
+        'baz',
+    ],
 ];

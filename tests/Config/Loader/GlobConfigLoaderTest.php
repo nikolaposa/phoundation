@@ -12,22 +12,25 @@ declare(strict_types=1);
 
 namespace Phoundation\Tests\Config\Loader;
 
-use PHPUnit\Framework\TestCase;
+use Phoundation\Config\Loader\LoaderInterface;
 use Phoundation\Config\Loader\GlobConfigLoader;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-class GlobConfigLoaderTest extends TestCase
+class GlobConfigLoaderTest extends ConfigLoaderTest
 {
+    protected function createConfigLoader() : LoaderInterface
+    {
+        return new GlobConfigLoader();
+    }
+
     /**
      * @test
      */
     public function it_merges_configurations_in_correct_order()
     {
-        $configLoader = new GlobConfigLoader();
-
-        $config = $configLoader([
+        $config = $this->configLoader->__invoke([
             __DIR__ . '/../../TestAsset/Config/Glob/{{,*.}global,{,*.}local}.php',
         ]);
 

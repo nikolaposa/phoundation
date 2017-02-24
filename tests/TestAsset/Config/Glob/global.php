@@ -18,4 +18,7 @@ return [
             'logger' => \Phoundation\Tests\TestAsset\Service\InMemoryLogger::class,
         ],
     ],
+    'foo' => [
+        'bar',
+    ],
 ];
