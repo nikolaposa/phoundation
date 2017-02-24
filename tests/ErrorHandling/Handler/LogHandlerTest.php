@@ -15,8 +15,7 @@ namespace Phoundation\Tests\Config\Loader;
 use Phoundation\Exception\DontLogInterface;
 use PHPUnit\Framework\TestCase;
 use Phoundation\ErrorHandling\Handler\LogHandler;
-use Psr\Log\LoggerInterface;
-use Psr\Log\AbstractLogger;
+use Phoundation\Tests\TestAsset\Service\InMemoryLogger;
 use Psr\Log\LogLevel;
 use RuntimeException;
 use ErrorException;
@@ -32,29 +31,13 @@ class LogHandlerTest extends TestCase
     protected $logHandler;
 
     /**
-     * @var LoggerInterface
+     * @var InMemoryLogger
      */
     protected $logger;
 
     protected function setUp()
     {
-        $this->logger = new class extends AbstractLogger {
-            protected $logs = [];
-
-            public function log($level, $message, array $context = array())
-            {
-                $this->logs[] = [
-                    'level' => $level,
-                    'message' => $message,
-                    'context' => $context,
-                ];
-            }
-
-            public function getLogs()
-            {
-                return $this->logs;
-            }
-        };
+        $this->logger = new InMemoryLogger();
 
         $this->logHandler = new LogHandler($this->logger);
     }

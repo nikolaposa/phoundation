@@ -42,18 +42,26 @@ final class PimpleFactory extends AbstractFactory
     private function setFactories()
     {
         foreach ($this->getDiConfig('factories') as $name => $factory) {
-            $this->container[$name] = function ($container) use ($factory, $name) {
-                /* @var $container Container */
+            if (is_string($factory)) {
+                $factoryName = $factory;
 
-                if ($container->has($factory)) {
-                    $factory = $container->get($factory);
-                } else {
-                    $factory = new $factory();
-                    $container[$factory] = $container->protect($factory);
-                }
+                $this->container[$name] = function ($container) use ($factoryName, $name) {
+                    /* @var $container Container */
 
-                return $factory($container, $name);
-            };
+                    if ($container->has($factoryName)) {
+                        $factory = $container->get($factoryName);
+                    } else {
+                        $factory = new $factoryName();
+                        $container[$factoryName] = $container->protect($factory);
+                    }
+
+                    return $factory($container, $name);
+                };
+
+                continue;
+            }
+
+            $this->container[$name] = $factory;
         }
     }
 
