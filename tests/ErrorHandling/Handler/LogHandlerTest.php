@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Phoundation\Tests\Config\Loader;
 
+use Phoundation\Exception\DontLogInterface;
 use PHPUnit\Framework\TestCase;
 use Phoundation\ErrorHandling\Handler\LogHandler;
 use Psr\Log\LoggerInterface;
@@ -148,5 +149,20 @@ class LogHandlerTest extends TestCase
 
         $this->assertCount(1, $logs);
         $this->assertEquals(LogLevel::NOTICE, $logs[0]['level']);
+    }
+
+    /**
+     * @test
+     */
+    public function it_doesnt_log_if_exception_is_in_dont_log_list()
+    {
+        $ex = new class extends RuntimeException implements DontLogInterface {
+        };
+
+        $this->logHandler->__invoke($ex);
+
+        $logs = $this->logger->getLogs();
+
+        $this->assertCount(0, $logs);
     }
 }

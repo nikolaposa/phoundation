@@ -27,14 +27,20 @@ final class LogHandler
      */
     private $logger;
 
-    public function __construct(LoggerInterface $logger)
+    /**
+     * @var array
+     */
+    private $dontLog;
+
+    public function __construct(LoggerInterface $logger, array $dontLog = [])
     {
         $this->logger = $logger;
+        $this->dontLog = array_merge($dontLog, [DontLogInterface::class]);
     }
 
     public function __invoke(Throwable $e)
     {
-        if ($e instanceof DontLogInterface) {
+        if (!$this->shouldLog($e)) {
             return;
         }
 
@@ -45,6 +51,17 @@ final class LogHandler
         ];
 
         $this->logger->log($logLevel, $message, $context);
+    }
+
+    private function shouldLog(Throwable $e) : bool
+    {
+        foreach ($this->dontLog as $type) {
+            if ($e instanceof $type) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private function resolveLogLevel(Throwable $e)
