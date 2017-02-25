@@ -20,7 +20,12 @@ composer require nikolaposa/phoundation
 
 ## Purpose
 
-Bootstrapping logic of today's PHP applications typically have this form:
+The entire bootstrapping logic of today's PHP applications can be reduced to two things:
+
+1. loading configuration
+1. initialization of the DI container
+
+Typically, it takes this form:
 
 ```php
 require '../vendor/autoload.php';
@@ -32,8 +37,6 @@ $diContainer = new \Some\Di\Container($config);
 $app = $diContainer->get('App');
 $app->run();
 ```
-
-Part of loading configuration files and initializing DI container are common characteristics for most of them. Regardless of the framework that is being used bootstrapping principle is the same, but the actual solutions vary due to differences in terms of configuration conventions, DI container implementation, and similar. And this is exactly the problem from the reusability and interoperability perspective.
 
 Phoundation aims to abstract and facilitate implementation of these matters through several independent components, still integrated together through a bootstrapping mechanism suitable for virtually any type of PHP project. 
 
@@ -47,7 +50,7 @@ While Phoundation is quite flexible in this regard thanks to `Phoundation\Config
 
 ### Dependency Injection
 
-Logic for constructing and assembling application services constitutes DI container, which is the output of the bootstrapping procedure. Every application service, including application runner itself is defined in it.
+Logic for constructing and assembling application services constitutes DI container, which is the key concept around which everything else revolves. Every application service, including application runner itself is defined in it.
 
 Phoundation provides factories for several DI container solutions:
 
