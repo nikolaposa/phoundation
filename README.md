@@ -25,19 +25,6 @@ The entire bootstrapping logic of today's PHP applications can be reduced to two
 1. loading configuration
 1. initialization of the DI container
 
-Typically, it takes this form:
-
-```php
-require '../vendor/autoload.php';
-
-$config = require '../config/config.php';
-
-$diContainer = new \Some\Di\Container($config);
-
-$app = $diContainer->get('App');
-$app->run();
-```
-
 Phoundation aims to abstract and facilitate implementation of these matters through several independent components, still integrated together through a bootstrapping mechanism suitable for virtually any type of PHP project. 
 
 ### Configuration files
