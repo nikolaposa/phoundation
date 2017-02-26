@@ -59,11 +59,11 @@ Component that connects these different pieces together is `Bootstrap` which is 
 
 ```php
 use Phoundation\Bootstrap\Bootstrap;
-use Phoundation\Config\Loader\FileLoader;
+use Phoundation\Config\Loader\FileConfigLoader;
 use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
 
 $bootstrap = new Bootstrap(
-    new FileLoader(glob(sprintf('config/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'), GLOB_BRACE)),
+    new FileConfigLoader(glob(sprintf('config/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'), GLOB_BRACE)),
     new ZendServiceManagerFactory()
 );
 $diContainer = $bootstrap();

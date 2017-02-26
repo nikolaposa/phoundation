@@ -17,34 +17,20 @@ use Phoundation\Config\Config;
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-final class FileLoader extends AbstractLoader
+final class StaticConfigLoader implements ConfigLoaderInterface
 {
     /**
      * @var array
      */
-    private $paths;
+    private $config;
 
-    /**
-     * @var array
-     */
-    private $config = [];
-
-    public function __construct(array $paths)
+    public function __construct(array $config)
     {
-        $this->paths = $paths;
+        $this->config = $config;
     }
 
     public function __invoke() : Config
     {
-        foreach ($this->paths as $path) {
-            $this->loadFromPath($path);
-        }
-
         return Config::fromArray($this->config);
-    }
-
-    private function loadFromPath(string $path)
-    {
-        $this->config = self::arrayMerge($this->config, include $path);
     }
 }

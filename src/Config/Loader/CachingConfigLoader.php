@@ -12,9 +12,15 @@ declare(strict_types=1);
 
 namespace Phoundation\Config\Loader;
 
+use Phoundation\Config\Config;
+
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-class CachingLoader
+final class CachingConfigLoader implements ConfigLoaderInterface
 {
+    public function __invoke() : Config
+    {
+        // TODO: Implement __invoke() method.
+    }
 }

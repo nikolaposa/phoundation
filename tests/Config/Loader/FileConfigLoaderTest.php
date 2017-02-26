@@ -13,20 +13,20 @@ declare(strict_types=1);
 namespace Phoundation\Tests\Config;
 
 use PHPUnit\Framework\TestCase;
-use Phoundation\Config\Loader\FileLoader;
+use Phoundation\Config\Loader\FileConfigLoader;
 use Phoundation\Config\Config;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-class FileLoaderTest extends TestCase
+class FileConfigLoaderTest extends TestCase
 {
     /**
      * @test
      */
     public function it_loads_config_from_path()
     {
-        $loader = new FileLoader([
+        $loader = new FileConfigLoader([
             __DIR__ . '/../../TestAsset/Config/global.php',
         ]);
 
@@ -41,7 +41,7 @@ class FileLoaderTest extends TestCase
      */
     public function it_loads_config_from_glob_path()
     {
-        $loader = new FileLoader(glob(__DIR__ . '/../../TestAsset/Config/{{,*.}global,{,*.}local}.php', GLOB_BRACE));
+        $loader = new FileConfigLoader(glob(__DIR__ . '/../../TestAsset/Config/{{,*.}global,{,*.}local}.php', GLOB_BRACE));
 
         $config = $loader();
 

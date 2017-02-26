@@ -14,7 +14,7 @@ namespace Phoundation\Bootstrap\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Phoundation\Bootstrap\Bootstrap;
-use Phoundation\Config\Loader\StaticLoader;
+use Phoundation\Config\Loader\StaticConfigLoader;
 use Interop\Container\ContainerInterface;
 use Phoundation\Config\Config;
 use Phoundation\Di\Container\Factory\DiContainerFactoryInterface;
@@ -35,7 +35,7 @@ class BootstrapTest extends TestCase
     public function it_produces_di_container()
     {
         $bootstrap = new Bootstrap(
-            new StaticLoader([
+            new StaticConfigLoader([
                 'foo' => 'bar',
             ]),
             new ZendServiceManagerFactory()
@@ -53,7 +53,7 @@ class BootstrapTest extends TestCase
     public function it_puts_config_into_di_container()
     {
         $bootstrap = new Bootstrap(
-            new StaticLoader([
+            new StaticConfigLoader([
                 'foo' => 'bar',
             ]),
             new ZendServiceManagerFactory()
@@ -74,7 +74,7 @@ class BootstrapTest extends TestCase
         $currentTz = ini_get('date.timezone');
 
         $bootstrap = new Bootstrap(
-            new StaticLoader([
+            new StaticConfigLoader([
                 'php_settings' => [
                     'date.timezone' => 'Europe/Belgrade',
                 ],
@@ -95,7 +95,7 @@ class BootstrapTest extends TestCase
     public function it_registers_error_handler_if_provided_through_di_config()
     {
         $bootstrap = new Bootstrap(
-            new StaticLoader([
+            new StaticConfigLoader([
                 'di' => [
                     'factories' => [
                         RunnerInterface::class => function () {
