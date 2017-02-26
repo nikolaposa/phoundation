@@ -23,4 +23,9 @@ class Config extends ArrayObject
     {
         return new self($config);
     }
+
+    public function toArray() : array
+    {
+        return $this->getArrayCopy();
+    }
 }

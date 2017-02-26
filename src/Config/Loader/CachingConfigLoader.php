@@ -19,8 +19,34 @@ use Phoundation\Config\Config;
  */
 final class CachingConfigLoader implements ConfigLoaderInterface
 {
+    /**
+     * @var ConfigLoaderInterface
+     */
+    private $configLoader;
+
+    /**
+     * @var string
+     */
+    private $cachedConfigFile;
+    
+    public function __construct(ConfigLoaderInterface $configLoader, string $cachedConfigFile)
+    {
+        $this->configLoader = $configLoader;
+        $this->cachedConfigFile = $cachedConfigFile;
+    }
+
     public function __invoke() : Config
     {
-        // TODO: Implement __invoke() method.
+        if (is_file($this->cachedConfigFile)) {
+            return Config::fromArray(include $this->cachedConfigFile);
+        }
+
+        $configLoader = $this->configLoader;
+        /* @var $config Config */
+        $config = $configLoader();
+
+        file_put_contents($this->cachedConfigFile, '<?php return ' . var_export($config->toArray(), true) . ';');
+
+        return $config;
     }
 }

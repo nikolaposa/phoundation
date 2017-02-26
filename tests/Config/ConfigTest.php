@@ -47,4 +47,16 @@ class ConfigTest extends TestCase
 
         $this->assertEquals('pdo_mysql', $config['db']['driver']);
     }
+
+    /**
+     * @test
+     */
+    public function it_can_converted_to_array()
+    {
+        $config = Config::fromArray([
+            'foo' => 'bar',
+        ]);
+
+        $this->assertEquals(['foo' => 'bar'], $config->toArray());
+    }
 }
