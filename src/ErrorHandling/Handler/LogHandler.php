@@ -14,7 +14,6 @@ namespace Phoundation\ErrorHandling\Handler;
 
 use Psr\Log\LoggerInterface;
 use Throwable;
-use Phoundation\Exception\DontLogInterface;
 use Psr\Log\LogLevel;
 
 /**
