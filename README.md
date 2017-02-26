@@ -75,7 +75,7 @@ Component that connects these different pieces together is `Bootstrap` which is 
 use Phoundation\Bootstrap\Bootstrap;
 use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
 
-$diContainer = new Bootstrap([
+$bootstrap = new Bootstrap([
     'config' => [
         'foo' => 'bar',
     ],
@@ -83,9 +83,8 @@ $diContainer = new Bootstrap([
         sprintf('config/autoload/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'),
     ],
     'di_container_factory' => ZendServiceManagerFactory::class,
-])->run([
-    sprintf('config/autoload/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'),
 ]);
+$diContainer = $bootstrap();
 
 //...
 ```
