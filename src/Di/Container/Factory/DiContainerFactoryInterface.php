@@ -17,10 +17,10 @@ use Phoundation\Config\Config;
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-interface FactoryInterface
+interface DiContainerFactoryInterface
 {
     const DEFAULT_DI_CONFIG_KEY = 'di';
     const DEFAULT_CONFIG_SERVICE_NAME = 'config';
 
-    public function __invoke(Config $config, string $diConfigKey = self::DEFAULT_DI_CONFIG_KEY, string $configServiceName = self::DEFAULT_CONFIG_SERVICE_NAME);
+    public function __invoke(Config $config);
 }

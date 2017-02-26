@@ -33,7 +33,7 @@ Besides parameters for supporting services, for example database connection, cac
 
 Ultimately, goal is to load/aggregate configurations based on the environment, and make it available for the application typically in form of an array or an ArrayObject.
 
-While Phoundation is quite flexible in this regard thanks to `Phoundation\Config\Loader\LoaderInterface`, there's a trend adopted by many frameworks and projects for environment-specific configurations, a concept that is nicely described in [Zend Framework's documentation](https://docs.zendframework.com/tutorials/advanced-config/#environment-specific-application-configuration).
+While Phoundation is quite flexible in this regard thanks to `Phoundation\Config\Loader\ConfigLoaderInterface`, there's a trend adopted by many frameworks and projects for environment-specific configurations, a concept that is nicely described in [Zend Framework's documentation](https://docs.zendframework.com/tutorials/advanced-config/#environment-specific-application-configuration).
 
 ### Dependency Injection
 
@@ -59,17 +59,13 @@ Component that connects these different pieces together is `Bootstrap` which is 
 
 ```php
 use Phoundation\Bootstrap\Bootstrap;
+use Phoundation\Config\Loader\FileLoader;
 use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
 
-$bootstrap = new Bootstrap([
-    'config' => [
-        'foo' => 'bar',
-    ],
-    'config_glob_paths' => [
-        sprintf('config/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'),
-    ],
-    'di_container_factory' => ZendServiceManagerFactory::class,
-]);
+$bootstrap = new Bootstrap(
+    new FileLoader(glob(sprintf('config/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'), GLOB_BRACE)),
+    new ZendServiceManagerFactory()
+);
 $diContainer = $bootstrap();
 
 //...

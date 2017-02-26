@@ -10,17 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Phoundation\Tests\Di\Container\Factory;
-
-use Phoundation\Di\Container\Factory\PimpleFactory;
+namespace Phoundation\Config\Loader;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-class PimpleFactoryTest extends ContainerFactoryTest
+class CachingLoader
 {
-    protected function createFactory(array $options = [])
-    {
-        return new PimpleFactory($options);
-    }
 }

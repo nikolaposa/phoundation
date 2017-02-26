@@ -17,28 +17,29 @@ use Phoundation\Config\Config;
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-abstract class AbstractFactory implements FactoryInterface
+abstract class AbstractFactory implements DiContainerFactoryInterface
 {
+    /**
+     * @var array
+     */
+    private $options;
+
     /**
      * @var Config
      */
     private $config;
 
-    /**
-     * @var string
-     */
-    private $diConfigKey;
+    public function __construct(array $options = [])
+    {
+        $this->options = array_merge([
+            'di_config_key' => self::DEFAULT_DI_CONFIG_KEY,
+            'config_service_name' => self::DEFAULT_CONFIG_SERVICE_NAME,
+        ], $options);
+    }
 
-    /**
-     * @var string
-     */
-    private $configServiceName;
-
-    public function __invoke(Config $config, string $diConfigKey = self::DEFAULT_DI_CONFIG_KEY, string $configServiceName = self::DEFAULT_CONFIG_SERVICE_NAME)
+    public function __invoke(Config $config)
     {
         $this->config = $config;
-        $this->diConfigKey = $diConfigKey;
-        $this->configServiceName = $configServiceName;
 
         $container = $this->createContainer();
 
@@ -58,16 +59,18 @@ abstract class AbstractFactory implements FactoryInterface
 
     final protected function getConfigServiceName()
     {
-        return $this->configServiceName;
+        return $this->options['config_service_name'];
     }
 
     final protected function getDiConfig() : array
     {
-        if (empty($this->config[$this->diConfigKey]) || !is_array($this->config[$this->diConfigKey])) {
+        $diConfigKey = $this->options['di_config_key'];
+        
+        if (empty($this->config[$diConfigKey]) || !is_array($this->config[$diConfigKey])) {
             return [];
         }
 
-        return $this->config[$this->diConfigKey];
+        return $this->config[$diConfigKey];
     }
 
     final protected function getDiConfigGroup(string $group) : array

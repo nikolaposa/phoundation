@@ -12,9 +12,10 @@ declare(strict_types=1);
 
 namespace Phoundation\Bootstrap;
 
+use Phoundation\Config\Loader\ConfigLoaderInterface;
+use Phoundation\Di\Container\Factory\DiContainerFactoryInterface;
 use Phoundation\Config\Config;
 use Psr\Container\ContainerInterface;
-use Phoundation\Config\ConfigFactory;
 use Phoundation\ErrorHandling\RunnerInterface;
 
 /**
@@ -23,9 +24,14 @@ use Phoundation\ErrorHandling\RunnerInterface;
 class Bootstrap
 {
     /**
-     * @var Options
+     * @var ConfigLoaderInterface
      */
-    protected $options;
+    protected $configLoader;
+
+    /**
+     * @var DiContainerFactoryInterface
+     */
+    protected $diContainerFactory;
 
     /**
      * @var Config
@@ -37,14 +43,15 @@ class Bootstrap
      */
     protected $diContainer;
 
-    public function __construct(array $options)
+    public function __construct(ConfigLoaderInterface $configLoader, DiContainerFactoryInterface $diContainerFactory)
     {
-        $this->options = Options::fromArray($options);
+        $this->configLoader = $configLoader;
+        $this->diContainerFactory = $diContainerFactory;
     }
 
     public function __invoke()
     {
-        $this->buildConfig();
+        $this->loadConfig();
         $this->buildDiContainer();
 
         $this->setPhpSettings();
@@ -53,26 +60,17 @@ class Bootstrap
         return $this->diContainer;
     }
 
-    protected function buildConfig()
+    protected function loadConfig()
     {
-        $config = Config::fromArray($this->options->getConfig());
-
-        foreach ($this->options->getConfigPaths() as $path) {
-            $config->merge(ConfigFactory::createFromPath($path));
-        }
-
-        foreach ($this->options->getConfigGlobPaths() as $globPath) {
-            $config->merge(ConfigFactory::createFromGlobPath($globPath));
-        }
-
-        $this->config = $config;
+        $configLoader = $this->configLoader;
+        $this->config = $configLoader();
     }
 
     protected function buildDiContainer()
     {
-        $diContainerFactory = $this->options->getDiContainerFactory();
+        $diContainerFactory = $this->diContainerFactory;
 
-        $this->diContainer = $diContainerFactory($this->config, $this->options->getDiConfigKey(), $this->options->getConfigServiceName());
+        $this->diContainer = $diContainerFactory($this->config);
     }
 
     protected function setPhpSettings()

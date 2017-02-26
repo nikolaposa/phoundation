@@ -19,8 +19,8 @@ use Phoundation\Di\Container\Factory\AuraDiFactory;
  */
 class AuraDiFactoryTest extends ContainerFactoryTest
 {
-    protected function createFactory()
+    protected function createFactory(array $options = [])
     {
-        return new AuraDiFactory();
+        return new AuraDiFactory($options);
     }
 }

@@ -10,23 +10,27 @@
 
 declare(strict_types=1);
 
-namespace Phoundation\Tests\Config\Loader;
+namespace Phoundation\Tests\Config;
 
 use PHPUnit\Framework\TestCase;
-use Phoundation\Config\ConfigFactory;
+use Phoundation\Config\Loader\FileLoader;
 use Phoundation\Config\Config;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-class ConfigFactoryTest extends TestCase
+class FileLoaderTest extends TestCase
 {
     /**
      * @test
      */
-    public function it_creates_config_from_path()
+    public function it_loads_config_from_path()
     {
-        $config = ConfigFactory::createFromPath(__DIR__ . '/../TestAsset/Config/Glob/global.php');
+        $loader = new FileLoader([
+            __DIR__ . '/../../TestAsset/Config/global.php',
+        ]);
+
+        $config = $loader();
 
         $this->assertInstanceOf(Config::class, $config);
         $this->assertEquals('localhost', $config['db']['host']);
@@ -35,9 +39,11 @@ class ConfigFactoryTest extends TestCase
     /**
      * @test
      */
-    public function it_creates_config_from_glob_path()
+    public function it_loads_config_from_glob_path()
     {
-        $config = ConfigFactory::createFromGlobPath(__DIR__ . '/../TestAsset/Config/Glob/{{,*.}global,{,*.}local}.php');
+        $loader = new FileLoader(glob(__DIR__ . '/../../TestAsset/Config/{{,*.}global,{,*.}local}.php', GLOB_BRACE));
+
+        $config = $loader();
 
         $this->assertInstanceOf(Config::class, $config);
         $this->assertEquals('test', $config['db']['user']);
