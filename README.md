@@ -88,7 +88,7 @@ $diContainer = $bootstrap();
 //...
 ```
 
-**/config/global.php**
+**config/global.php**
 
 ```php
 return [
@@ -109,7 +109,7 @@ return [
 ];
 ```
 
-**/config/local.php**
+**config/local.php**
 
 ```php
 return [
