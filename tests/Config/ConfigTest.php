@@ -23,7 +23,7 @@ class ConfigTest extends TestCase
     /**
      * @test
      */
-    public function it_can_be_created_from_array()
+    public function it_is_created_from_array()
     {
         $config = Config::fromArray(['foo' => 'bar']);
 
@@ -33,7 +33,7 @@ class ConfigTest extends TestCase
     /**
      * @test
      */
-    public function it_can_accessed_as_array()
+    public function it_can_accessed_using_array_notation()
     {
         $config = Config::fromArray([
             'db' => [
@@ -46,5 +46,31 @@ class ConfigTest extends TestCase
         ]);
 
         $this->assertEquals('pdo_mysql', $config['db']['driver']);
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_be_merged_with_another_config()
+    {
+        $config = Config::fromArray([
+            'db' => [
+                'driver' => 'pdo_mysql',
+                'host' => 'localhost',
+                'user' => 'root',
+                'password' => 'secret',
+                'dbname' => 'test',
+            ],
+        ]);
+
+        $config->merge(Config::fromArray([
+            'db' => [
+                'user' => 'test',
+                'password' => '123',
+            ],
+        ]));
+
+        $this->assertEquals('test', $config['db']['user']);
+        $this->assertEquals('123', $config['db']['password']);
     }
 }

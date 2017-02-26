@@ -73,10 +73,16 @@ Component that connects these different pieces together is `Bootstrap` which is 
 ```php
 
 use Phoundation\Bootstrap\Bootstrap;
+use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
 
-$diContainer = Bootstrap::init([
-    'config_loader' => 'glob',
-    'di_container_factory' => 'zend-service-manager',
+$diContainer = new Bootstrap([
+    'config' => [
+        'foo' => 'bar',
+    ],
+    'config_glob_paths' => [
+        sprintf('config/autoload/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'),
+    ],
+    'di_container_factory' => ZendServiceManagerFactory::class,
 ])->run([
     sprintf('config/autoload/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'),
 ]);

@@ -17,10 +17,36 @@ use ArrayObject;
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
  */
-final class Config extends ArrayObject
+class Config extends ArrayObject
 {
     public static function fromArray(array $config)
     {
         return new self($config);
+    }
+
+    public function merge(Config $config)
+    {
+        $mergedConfig = self::arrayMerge($this->getArrayCopy(), $config->getArrayCopy());
+
+        $this->exchangeArray($mergedConfig);
+    }
+
+    final protected static function arrayMerge(array $a, array $b) : array
+    {
+        foreach ($b as $key => $value) {
+            if (array_key_exists($key, $a)) {
+                if (is_int($key)) {
+                    $a[] = $value;
+                } elseif (is_array($value) && is_array($a[$key])) {
+                    $a[$key] = self::arrayMerge($a[$key], $value);
+                } else {
+                    $a[$key] = $value;
+                }
+            } else {
+                $a[$key] = $value;
+            }
+        }
+
+        return $a;
     }
 }
