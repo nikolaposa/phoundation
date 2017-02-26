@@ -32,6 +32,27 @@ final class LogHandler
      */
     private $dontLog;
 
+    /**
+     * @var array
+     */
+    private static $errorSeverityLogLevelMap = [
+        E_ERROR => LogLevel::ERROR,
+        E_RECOVERABLE_ERROR => LogLevel::ERROR,
+        E_CORE_ERROR => LogLevel::ERROR,
+        E_COMPILE_ERROR => LogLevel::ERROR,
+        E_USER_ERROR => LogLevel::ERROR,
+        E_PARSE => LogLevel::ERROR,
+        E_WARNING => LogLevel::WARNING,
+        E_USER_WARNING => LogLevel::WARNING,
+        E_CORE_WARNING => LogLevel::WARNING,
+        E_COMPILE_WARNING => LogLevel::WARNING,
+        E_NOTICE => LogLevel::NOTICE,
+        E_USER_NOTICE => LogLevel::NOTICE,
+        E_STRICT => LogLevel::NOTICE,
+        E_DEPRECATED => LogLevel::NOTICE,
+        E_USER_DEPRECATED => LogLevel::NOTICE,
+    ];
+
     public function __construct(LoggerInterface $logger, array $dontLog = [])
     {
         $this->logger = $logger;
@@ -67,28 +88,7 @@ final class LogHandler
     private function resolveLogLevel(Throwable $e)
     {
         if ($e instanceof \ErrorException) {
-            switch ($e->getSeverity()) {
-                case E_ERROR:
-                case E_RECOVERABLE_ERROR:
-                case E_CORE_ERROR:
-                case E_COMPILE_ERROR:
-                case E_USER_ERROR:
-                case E_PARSE:
-                    return LogLevel::ERROR;
-                case E_WARNING:
-                case E_USER_WARNING:
-                case E_CORE_WARNING:
-                case E_COMPILE_WARNING:
-                    return LogLevel::WARNING;
-                case E_NOTICE:
-                case E_USER_NOTICE:
-                case E_STRICT:
-                case E_DEPRECATED:
-                case E_USER_DEPRECATED:
-                    return LogLevel::NOTICE;
-                default:
-                    break;
-            }
+            return self::$errorSeverityLogLevelMap[$e->getSeverity()] ?? LogLevel::ERROR;
         }
 
         return LogLevel::ERROR;
