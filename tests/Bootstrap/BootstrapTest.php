@@ -41,6 +41,7 @@ class BootstrapTest extends TestCase
             ],
             'di_container_factory' => ZendServiceManagerFactory::class,
         ]);
+
         $diContainer = $bootstrap();
 
         $this->assertInstanceOf(ContainerInterface::class, $diContainer);
@@ -76,11 +77,11 @@ class BootstrapTest extends TestCase
             ],
             'di_container_factory' => ZendServiceManagerFactory::class,
         ]);
+
         /* @var $diContainer ContainerInterface */
         $diContainer = $bootstrap();
 
         $config = $diContainer->get(FactoryInterface::DEFAULT_CONFIG_SERVICE_NAME);
-
         $this->assertInstanceOf(Config::class, $config);
     }
 
@@ -101,11 +102,11 @@ class BootstrapTest extends TestCase
             ],
             'di_container_factory' => ZendServiceManagerFactory::class,
         ]);
+
         /* @var $diContainer ContainerInterface */
         $diContainer = $bootstrap();
 
         $config = $diContainer->get(FactoryInterface::DEFAULT_CONFIG_SERVICE_NAME);
-
         $this->assertArrayHasKey('foo', $config);
         $this->assertArrayHasKey('db', $config);
     }
@@ -125,6 +126,7 @@ class BootstrapTest extends TestCase
             ],
             'di_container_factory' => ZendServiceManagerFactory::class,
         ]);
+
         $bootstrap();
 
         $this->assertEquals('Europe/Belgrade', ini_get('date.timezone'));
@@ -149,6 +151,7 @@ class BootstrapTest extends TestCase
             ],
             'di_container_factory' => ZendServiceManagerFactory::class,
         ]);
+
         /* @var $diContainer ContainerInterface */
         $diContainer = $bootstrap();
 
@@ -169,11 +172,11 @@ class BootstrapTest extends TestCase
             'di_container_factory' => ZendServiceManagerFactory::class,
             'config_service_name' => 'AppConfig',
         ]);
+
         /* @var $diContainer ContainerInterface */
         $diContainer = $bootstrap();
 
         $config = $diContainer->get('AppConfig');
-
         $this->assertInstanceOf(Config::class, $config);
     }
 
@@ -193,6 +196,7 @@ class BootstrapTest extends TestCase
             'di_container_factory' => ZendServiceManagerFactory::class,
             'di_config_key' => 'dependencies',
         ]);
+        
         /* @var $diContainer ContainerInterface */
         $diContainer = $bootstrap();
 
