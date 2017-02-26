@@ -68,10 +68,9 @@ Component that connects these different pieces together is `Bootstrap` which is 
 
 ## Usage
 
-* index.php
+**index.php**
 
 ```php
-
 use Phoundation\Bootstrap\Bootstrap;
 use Phoundation\Di\Container\Factory\ZendServiceManagerFactory;
 
@@ -87,6 +86,38 @@ $bootstrap = new Bootstrap([
 $diContainer = $bootstrap();
 
 //...
+```
+
+**/config/global.php**
+
+```php
+return [
+    'db' => [
+        'driver' => 'pdo_mysql',
+        'host' => 'localhost',
+        'user' => 'root',
+        'password' => 'secret',
+        'dbname' => 'test',
+    ],
+    'di' => [
+        'factories' => [
+            Phoundation\ErrorHandling\RunnerInterface::class => function () {
+                return new Phoundation\ErrorHandling\WhoopsRunner(new Whoops\Run());
+            },
+        ]
+    ],
+];
+```
+
+**/config/local.php**
+
+```php
+return [
+    'db' => [
+        'user' => 'test',
+        'password' => '1234',
+    ],
+];
 ```
 
 ## Author
