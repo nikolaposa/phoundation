@@ -79,7 +79,7 @@ $bootstrap = new Bootstrap([
         'foo' => 'bar',
     ],
     'config_glob_paths' => [
-        sprintf('config/autoload/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'),
+        sprintf('config/{{,*.}global,{,*.}%s}.php', getenv('APP_ENV') ?: 'local'),
     ],
     'di_container_factory' => ZendServiceManagerFactory::class,
 ]);
