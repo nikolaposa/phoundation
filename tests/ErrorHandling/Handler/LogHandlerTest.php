@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Phoundation\Tests\Config\Loader;
 
-use Phoundation\Exception\DontLogInterface;
 use PHPUnit\Framework\TestCase;
 use Phoundation\ErrorHandling\Handler\LogHandler;
 use Phoundation\Tests\TestAsset\Service\InMemoryLogger;
@@ -26,11 +25,6 @@ use ErrorException;
 class LogHandlerTest extends TestCase
 {
     /**
-     * @var LogHandler
-     */
-    protected $logHandler;
-
-    /**
      * @var InMemoryLogger
      */
     protected $logger;
@@ -38,8 +32,6 @@ class LogHandlerTest extends TestCase
     protected function setUp()
     {
         $this->logger = new InMemoryLogger();
-
-        $this->logHandler = new LogHandler($this->logger);
     }
 
     /**
@@ -47,10 +39,11 @@ class LogHandlerTest extends TestCase
      */
     public function it_logs_exception_message()
     {
-        $this->logHandler->__invoke(new RuntimeException('test'));
+        $logHandler = new LogHandler($this->logger);
+
+        $logHandler(new RuntimeException('test'));
 
         $logs = $this->logger->getLogs();
-
         $this->assertCount(1, $logs);
         $this->assertEquals('test', $logs[0]['message']);
     }
@@ -60,11 +53,12 @@ class LogHandlerTest extends TestCase
      */
     public function it_puts_exception_in_log_context()
     {
+        $logHandler = new LogHandler($this->logger);
         $e = new RuntimeException('test');
-        $this->logHandler->__invoke($e);
+
+        $logHandler($e);
 
         $logs = $this->logger->getLogs();
-
         $this->assertCount(1, $logs);
         $this->assertSame($e, $logs[0]['context']['exception']);
     }
@@ -74,10 +68,11 @@ class LogHandlerTest extends TestCase
      */
     public function it_logs_exception_with_error_level()
     {
-        $this->logHandler->__invoke(new RuntimeException('test'));
+        $logHandler = new LogHandler($this->logger);
+
+        $logHandler(new RuntimeException('test'));
 
         $logs = $this->logger->getLogs();
-
         $this->assertCount(1, $logs);
         $this->assertEquals(LogLevel::ERROR, $logs[0]['level']);
     }
@@ -87,10 +82,11 @@ class LogHandlerTest extends TestCase
      */
     public function it_logs_error_exception_of_core_error_severity_with_error_level()
     {
-        $this->logHandler->__invoke(new ErrorException('test', 0, E_CORE_ERROR));
+        $logHandler = new LogHandler($this->logger);
+
+        $logHandler(new ErrorException('test', 0, E_CORE_ERROR));
 
         $logs = $this->logger->getLogs();
-
         $this->assertCount(1, $logs);
         $this->assertEquals(LogLevel::ERROR, $logs[0]['level']);
     }
@@ -100,10 +96,11 @@ class LogHandlerTest extends TestCase
      */
     public function it_logs_error_exception_of_user_warning_severity_with_warning_level()
     {
-        $this->logHandler->__invoke(new ErrorException('test', 0, E_USER_WARNING));
+        $logHandler = new LogHandler($this->logger);
+
+        $logHandler(new ErrorException('test', 0, E_USER_WARNING));
 
         $logs = $this->logger->getLogs();
-
         $this->assertCount(1, $logs);
         $this->assertEquals(LogLevel::WARNING, $logs[0]['level']);
     }
@@ -113,10 +110,11 @@ class LogHandlerTest extends TestCase
      */
     public function it_logs_error_exception_of_notice_severity_with_notice_level()
     {
-        $this->logHandler->__invoke(new ErrorException('test', 0, E_NOTICE));
+        $logHandler = new LogHandler($this->logger);
+
+        $logHandler(new ErrorException('test', 0, E_NOTICE));
 
         $logs = $this->logger->getLogs();
-
         $this->assertCount(1, $logs);
         $this->assertEquals(LogLevel::NOTICE, $logs[0]['level']);
     }
@@ -126,10 +124,11 @@ class LogHandlerTest extends TestCase
      */
     public function it_logs_error_exception_of_deprecated_severity_with_notice_level()
     {
-        $this->logHandler->__invoke(new ErrorException('test', 0, E_DEPRECATED));
+        $logHandler = new LogHandler($this->logger);
+
+        $logHandler(new ErrorException('test', 0, E_DEPRECATED));
 
         $logs = $this->logger->getLogs();
-
         $this->assertCount(1, $logs);
         $this->assertEquals(LogLevel::NOTICE, $logs[0]['level']);
     }
@@ -139,13 +138,13 @@ class LogHandlerTest extends TestCase
      */
     public function it_doesnt_log_if_exception_is_in_dont_log_list()
     {
-        $ex = new class extends RuntimeException implements DontLogInterface {
-        };
+        $logHandler = new LogHandler($this->logger, [
+            RuntimeException::class,
+        ]);
 
-        $this->logHandler->__invoke($ex);
+        $logHandler(new RuntimeException());
 
         $logs = $this->logger->getLogs();
-
         $this->assertCount(0, $logs);
     }
 }

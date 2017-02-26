@@ -56,7 +56,7 @@ final class LogHandler
     public function __construct(LoggerInterface $logger, array $dontLog = [])
     {
         $this->logger = $logger;
-        $this->dontLog = array_merge($dontLog, [DontLogInterface::class]);
+        $this->dontLog = $dontLog;
     }
 
     public function __invoke(Throwable $e)
