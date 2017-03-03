@@ -26,11 +26,11 @@ class FileConfigLoaderTest extends TestCase
      */
     public function it_loads_config_from_path()
     {
-        $loader = new FileConfigLoader([
+        $configLoader = new FileConfigLoader([
             __DIR__ . '/../../TestAsset/Config/global.php',
         ]);
 
-        $config = $loader();
+        $config = $configLoader();
 
         $this->assertInstanceOf(Config::class, $config);
         $this->assertEquals('localhost', $config['db']['host']);
@@ -41,11 +41,24 @@ class FileConfigLoaderTest extends TestCase
      */
     public function it_loads_config_from_glob_path()
     {
-        $loader = new FileConfigLoader(glob(__DIR__ . '/../../TestAsset/Config/{{,*.}global,{,*.}local}.php', GLOB_BRACE));
+        $configLoader = new FileConfigLoader(glob(__DIR__ . '/../../TestAsset/Config/{{,*.}global,{,*.}local}.php', GLOB_BRACE));
 
-        $config = $loader();
+        $config = $configLoader();
 
         $this->assertInstanceOf(Config::class, $config);
         $this->assertEquals('test', $config['db']['user']);
+    }
+
+    /**
+     * @test
+     */
+    public function it_merges_array_config_items_properly()
+    {
+        $configLoader = new FileConfigLoader(glob(__DIR__ . '/../../TestAsset/Config/{{,*.}global,{,*.}local}.php', GLOB_BRACE));
+
+        $config = $configLoader();
+
+        $this->assertInstanceOf(Config::class, $config);
+        $this->assertEquals(['bar', 'baz'], $config['foo']);
     }
 }
