@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Phoundation\Di\Container\Factory;
 
+use Interop\Container\ContainerInterface;
 use Phoundation\Config\Config;
 
 /**
@@ -37,7 +38,7 @@ abstract class AbstractFactory implements DiContainerFactoryInterface
         ], $options);
     }
 
-    public function __invoke(Config $config)
+    public function __invoke(Config $config) : ContainerInterface
     {
         $this->config = $config;
 

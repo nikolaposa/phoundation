@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Phoundation\Di\Container\Factory;
 
+use Interop\Container\ContainerInterface;
 use Phoundation\Config\Config;
 
 /**
@@ -22,5 +23,5 @@ interface DiContainerFactoryInterface
     const DEFAULT_DI_CONFIG_KEY = 'di';
     const DEFAULT_CONFIG_SERVICE_NAME = 'config';
 
-    public function __invoke(Config $config);
+    public function __invoke(Config $config) : ContainerInterface;
 }
