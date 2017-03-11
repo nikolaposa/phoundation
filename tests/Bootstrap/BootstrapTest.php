@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Phoundation\Bootstrap\Tests;
+namespace Phoundation\Tests\Bootstrap;
 
 use PHPUnit\Framework\TestCase;
 use Phoundation\Bootstrap\Bootstrap;

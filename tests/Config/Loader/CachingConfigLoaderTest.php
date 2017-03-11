@@ -42,7 +42,7 @@ class CachingConfigLoaderTest extends BaseFilesystemTest
     /**
      * @test
      */
-    public function it_caches_load_config_into_file()
+    public function it_caches_loaded_config_into_file()
     {
         $configLoader = new CachingConfigLoader(
             new StaticConfigLoader(['foo' => 'bar']),

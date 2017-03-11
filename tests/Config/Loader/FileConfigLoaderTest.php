@@ -52,7 +52,7 @@ class FileConfigLoaderTest extends TestCase
     /**
      * @test
      */
-    public function it_merges_array_config_items_properly()
+    public function it_merges_multiple_configurations()
     {
         $configLoader = new FileConfigLoader(glob(__DIR__ . '/../../TestAsset/Config/{{,*.}global,{,*.}local}.php', GLOB_BRACE));
 

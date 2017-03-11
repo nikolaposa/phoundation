@@ -33,7 +33,7 @@ class ConfigTest extends TestCase
     /**
      * @test
      */
-    public function it_can_accessed_using_array_notation()
+    public function it_can_be_accessed_using_array_notation()
     {
         $config = Config::fromArray([
             'db' => [
@@ -51,7 +51,7 @@ class ConfigTest extends TestCase
     /**
      * @test
      */
-    public function it_can_converted_to_array()
+    public function it_can_be_converted_to_array()
     {
         $config = Config::fromArray([
             'foo' => 'bar',
