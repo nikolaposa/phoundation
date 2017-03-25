@@ -16,4 +16,4 @@ All notable changes to this project will be documented in this file.
 - `Interop\Container\ContainerInterface` as return type declaration in DI container factories
 
 
-[Unreleased]: https://github.com/nikolaposa/rate-limit/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/nikolaposa/phoundation/compare/1.0.0...HEAD
