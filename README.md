@@ -29,7 +29,7 @@ Phoundation aims to abstract and facilitate implementation of these matters thro
 
 ### Configuration files
 
-Besides parameters for supporting services, for example database connection, cache, email server, configuration files usually contain application-specific settings, such as definitions of objects that should be registered with the DI container and similar. Configuration values are different depending on the environment in which application is running (development, production), and there are multiple strategies for having per-environment configuration setup. 
+Besides environment stack parameters, for example database connection, cache, email server, configuration files usually contain application-specific settings, such as definitions of objects that should be registered with the DI container and similar. Configuration values are different depending on the environment in which application is running (development, production), and there are multiple strategies for having per-environment configuration setup. 
 
 Ultimately, goal is to load/aggregate configurations based on the environment, and make it available for the application typically in form of an array or an ArrayObject.
 
