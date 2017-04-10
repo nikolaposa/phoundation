@@ -37,7 +37,7 @@ While Phoundation is quite flexible in this regard thanks to `Phoundation\Config
 
 ### Dependency Injection
 
-Logic for constructing and assembling application services constitutes DI container, which is the key surrounding concept that dictates the application flow. Every application service, including application runner itself is defined in it.
+Dependency Injection container is the key surrounding concept that manages logic for constructing and assembling building blocks of the application. Every application service, including application runner itself is defined in it.
 
 Phoundation provides factories for several DI container solutions:
 
