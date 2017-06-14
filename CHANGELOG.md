@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased][Unreleased]
+## 1.1.0 - 2017-06-14
 
 ### Added
 - `ConfigLoaderAggregate` that aggregates configurations from multiple loaders.
@@ -16,4 +16,4 @@ All notable changes to this project will be documented in this file.
 - `Interop\Container\ContainerInterface` as return type declaration in DI container factories
 
 
-[Unreleased]: https://github.com/nikolaposa/phoundation/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/nikolaposa/phoundation/compare/1.1.0...HEAD
