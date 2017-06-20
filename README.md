@@ -1,10 +1,10 @@
 # Phoundation
 
-[![Build Status](https://travis-ci.org/nikolaposa/phoundation.svg?branch=master)](https://travis-ci.org/nikolaposa/phoundation)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nikolaposa/phoundation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nikolaposa/phoundation/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/nikolaposa/phoundation/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/nikolaposa/phoundation/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/nikolaposa/phoundation/v/stable)](https://packagist.org/packages/nikolaposa/phoundation)
-[![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg)](https://github.com/php-pds/skeleton)
+[![Build Status][ico-build]][link-build]
+[![Code Quality][ico-code-quality]][link-code-quality]
+[![Code Coverage][ico-code-coverage]][link-code-coverage]
+[![Latest Version][ico-version]][link-packagist]
+[![PDS Skeleton][ico-pds]][link-pds]
 
 Phoundation (pronounced the same way as foundation) is a framework-agnostic basis for bootstrapping PHP applications. It provides components that facilitate tasks such as configuration loading, DI container initialization and registering central error handler.
 
@@ -103,13 +103,26 @@ return [
 ];
 ```
 
-## Author
+## Credits
 
-**Nikola Poša**
+- [Nikola Poša][link-author]
+- [All Contributors][link-contributors]
 
-* https://twitter.com/nikolaposa
-* https://github.com/nikolaposa
+## License
 
-## Copyright and license
+Released under MIT License - see the [License File](LICENSE) for details.
 
-Copyright 2017 Nikola Poša. Released under MIT License - see the `LICENSE` file for details.
+
+[ico-version]: https://img.shields.io/packagist/v/nikolaposa/phoundation.svg
+[ico-build]: https://travis-ci.org/nikolaposa/phoundation.svg?branch=master
+[ico-code-coverage]: https://img.shields.io/scrutinizer/coverage/g/nikolaposa/phoundation.svg?b=master
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/nikolaposa/phoundation.svg?b=master
+[ico-pds]: https://img.shields.io/badge/pds-skeleton-blue.svg
+
+[link-packagist]: https://packagist.org/packages/nikolaposa/phoundation
+[link-build]: https://travis-ci.org/nikolaposa/phoundation
+[link-code-coverage]: https://scrutinizer-ci.com/g/nikolaposa/phoundation/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/nikolaposa/phoundation
+[link-pds]: https://github.com/php-pds/skeleton
+[link-author]: https://github.com/nikolaposa
+[link-contributors]: ../../contributors
