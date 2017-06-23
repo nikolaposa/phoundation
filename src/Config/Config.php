@@ -19,7 +19,7 @@ use ArrayObject;
  */
 class Config extends ArrayObject
 {
-    public static function fromArray(array $config)
+    public static function fromArray(array $config) : Config
     {
         return new self($config);
     }

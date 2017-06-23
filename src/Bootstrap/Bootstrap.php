@@ -49,7 +49,7 @@ class Bootstrap
         $this->diContainerFactory = $diContainerFactory;
     }
 
-    public function __invoke()
+    public function __invoke() : ContainerInterface
     {
         $this->loadConfig();
         $this->buildDiContainer();

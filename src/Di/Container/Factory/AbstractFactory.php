@@ -49,11 +49,11 @@ abstract class AbstractFactory implements DiContainerFactoryInterface
         return $container;
     }
 
-    abstract protected function createContainer();
+    abstract protected function createContainer() : ContainerInterface;
 
-    abstract protected function configure($container);
+    abstract protected function configure(ContainerInterface $container);
 
-    final protected function getConfig()
+    final protected function getConfig() : Config
     {
         return $this->config;
     }
