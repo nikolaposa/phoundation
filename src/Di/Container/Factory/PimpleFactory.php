@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Phoundation\Di\Container\Factory;
 
+use Interop\Container\ContainerInterface;
 use Xtreamwayz\Pimple\Container;
 
 /**
@@ -24,12 +25,12 @@ final class PimpleFactory extends AbstractFactory
      */
     private $container;
 
-    protected function createContainer()
+    protected function createContainer() : ContainerInterface
     {
         return new Container();
     }
 
-    protected function configure($container)
+    protected function configure(ContainerInterface $container)
     {
         $this->container = $container;
 

@@ -14,6 +14,7 @@ namespace Phoundation\Di\Container\Factory;
 
 use Aura\Di\Container;
 use Aura\Di\ContainerBuilder;
+use Interop\Container\ContainerInterface;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
@@ -25,12 +26,12 @@ final class AuraDiFactory extends AbstractFactory
      */
     protected $container;
 
-    protected function createContainer()
+    protected function createContainer() : ContainerInterface
     {
         return (new ContainerBuilder())->newInstance();
     }
 
-    protected function configure($container)
+    protected function configure(ContainerInterface $container)
     {
         $this->container = $container;
         

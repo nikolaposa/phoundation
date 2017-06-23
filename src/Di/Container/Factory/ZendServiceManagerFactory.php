@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace Phoundation\Di\Container\Factory;
 
+use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\ServiceManager;
 
 /**
@@ -19,12 +20,12 @@ use Zend\ServiceManager\ServiceManager;
  */
 final class ZendServiceManagerFactory extends AbstractFactory
 {
-    protected function createContainer()
+    protected function createContainer() : ContainerInterface
     {
         return new ServiceManager();
     }
 
-    protected function configure($container)
+    protected function configure(ContainerInterface $container)
     {
         /* @var $container ServiceManager */
 
