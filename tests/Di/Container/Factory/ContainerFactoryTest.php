@@ -14,10 +14,10 @@ namespace Phoundation\Tests\Di\Container\Factory;
 
 use PHPUnit\Framework\TestCase;
 use Phoundation\Di\Container\Factory\DiContainerFactoryInterface;
-use Interop\Container\ContainerInterface;
 use Phoundation\Config\Config;
 use Phoundation\Tests\TestAsset\Service\InMemoryLogger;
 use Phoundation\Tests\TestAsset\Service\InMemoryLoggerFactory;
+use Psr\Container\ContainerInterface;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>

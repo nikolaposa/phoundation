@@ -14,7 +14,7 @@ namespace Phoundation\Di\Container\Factory;
 
 use Aura\Di\Container;
 use Aura\Di\ContainerBuilder;
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>

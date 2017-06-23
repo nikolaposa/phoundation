@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Phoundation\Di\Container\Factory;
 
-use Interop\Container\ContainerInterface;
 use Phoundation\Config\Config;
+use Psr\Container\ContainerInterface;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>
