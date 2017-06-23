@@ -15,8 +15,8 @@ namespace Phoundation\Bootstrap;
 use Phoundation\Config\Loader\ConfigLoaderInterface;
 use Phoundation\Di\Container\Factory\DiContainerFactoryInterface;
 use Phoundation\Config\Config;
-use Interop\Container\ContainerInterface;
 use Phoundation\ErrorHandling\RunnerInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * @author Nikola Posa <posa.nikola@gmail.com>

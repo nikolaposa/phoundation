@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Phoundation\Di\Container\Factory;
 
-use Interop\Container\ContainerInterface;
+use Psr\Container\ContainerInterface;
 use Xtreamwayz\Pimple\Container;
 
 /**
