@@ -103,6 +103,8 @@ return [
 ];
 ```
 
+See [more examples][link-examples].
+
 ## Credits
 
 - [Nikola Poša][link-author]
@@ -126,3 +128,4 @@ Released under MIT License - see the [License File](LICENSE) for details.
 [link-pds]: https://github.com/php-pds/skeleton
 [link-author]: https://github.com/nikolaposa
 [link-contributors]: ../../contributors
+[link-examples]: examples
