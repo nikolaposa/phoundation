@@ -39,7 +39,7 @@ While Phoundation is quite flexible in this regard thanks to `Phoundation\Config
 
 Dependency Injection container is the key surrounding concept that manages logic for constructing and assembling building blocks of the application. Every application service, including application runner itself is defined in it.
 
-Phoundation provides factories for several DI container solutions:
+Out of the box, Phoundation provides factories for several PSR-11 compliant DI container solutions:
 
 - [Zend Service Manager](https://github.com/zendframework/zend-servicemanager)
 - [Aura.DI](https://github.com/auraphp/Aura.Di)
