@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 2.0.0 - [Unreleased][Unreleased]
+## 2.0.0 - 2017-06-25
 
 ### Changed
 - [2: Strict return types](https://github.com/nikolaposa/phoundation/pull/2)
