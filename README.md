@@ -116,13 +116,13 @@ Released under MIT License - see the [License File](LICENSE) for details.
 
 
 [ico-version]: https://img.shields.io/packagist/v/nikolaposa/phoundation.svg
-[ico-build]: https://travis-ci.org/nikolaposa/phoundation.svg?branch=master
+[ico-build]: https://travis-ci.com/nikolaposa/phoundation.svg?branch=master
 [ico-code-coverage]: https://img.shields.io/scrutinizer/coverage/g/nikolaposa/phoundation.svg?b=master
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/nikolaposa/phoundation.svg?b=master
 [ico-pds]: https://img.shields.io/badge/pds-skeleton-blue.svg
 
 [link-packagist]: https://packagist.org/packages/nikolaposa/phoundation
-[link-build]: https://travis-ci.org/nikolaposa/phoundation
+[link-build]: https://travis-ci.com/nikolaposa/phoundation
 [link-code-coverage]: https://scrutinizer-ci.com/g/nikolaposa/phoundation/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/nikolaposa/phoundation
 [link-pds]: https://github.com/php-pds/skeleton
