@@ -115,10 +115,10 @@ See [more examples][link-examples].
 Released under MIT License - see the [License File](LICENSE) for details.
 
 
-[ico-version]: https://img.shields.io/packagist/v/nikolaposa/phoundation.svg
+[ico-version]: https://poser.pugx.org/nikolaposa/phoundation/v/stable
 [ico-build]: https://travis-ci.com/nikolaposa/phoundation.svg?branch=master
-[ico-code-coverage]: https://img.shields.io/scrutinizer/coverage/g/nikolaposa/phoundation.svg?b=master
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/nikolaposa/phoundation.svg?b=master
+[ico-code-coverage]: https://scrutinizer-ci.com/g/nikolaposa/phoundation/badges/coverage.png?b=master
+[ico-code-quality]: https://scrutinizer-ci.com/g/nikolaposa/phoundation/badges/quality-score.png?b=master
 [ico-pds]: https://img.shields.io/badge/pds-skeleton-blue.svg
 
 [link-packagist]: https://packagist.org/packages/nikolaposa/phoundation
