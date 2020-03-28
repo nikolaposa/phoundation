@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased][link-unreleased]
+## 3.0.0 - 2020-03-28
 
 ### Changed
 - PHP 7.2 is now the minimum required version
