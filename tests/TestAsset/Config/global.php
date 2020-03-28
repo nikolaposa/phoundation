@@ -1,4 +1,9 @@
-<?php
+<?php declare(strict_types=1);
+
+namespace Phoundation\Tests\TestAsset\Config;
+
+use PDO;
+use Phoundation\Tests\TestAsset\Service\InMemoryLogger;
 
 return [
     'db' => [
@@ -8,14 +13,14 @@ return [
         'password' => 'secret',
         'dbname' => 'test',
     ],
-    'di' => [
+    'dependencies' => [
         'factories' => [
             'pdo' => function () {
-                return new \PDO('sqlite::memory:');
+                return new PDO('sqlite::memory:');
             },
         ],
         'invokables' => [
-            'logger' => \Phoundation\Tests\TestAsset\Service\InMemoryLogger::class,
+            'logger' => InMemoryLogger::class,
         ],
     ],
     'foo' => [

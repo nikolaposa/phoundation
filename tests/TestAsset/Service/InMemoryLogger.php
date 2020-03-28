@@ -1,12 +1,4 @@
 <?php
-/**
- * This file is part of the Phoundation package.
- *
- * Copyright (c) Nikola Posa
- *
- * For full copyright and license information, please refer to the LICENSE file,
- * located at the package root folder.
- */
 
 declare(strict_types=1);
 
@@ -14,14 +6,12 @@ namespace Phoundation\Tests\TestAsset\Service;
 
 use Psr\Log\AbstractLogger;
 
-/**
- * @author Nikola Posa <posa.nikola@gmail.com>
- */
-class InMemoryLogger extends AbstractLogger
+final class InMemoryLogger extends AbstractLogger
 {
-    protected $logs = [];
+    /** @var array */
+    private $logs = [];
 
-    public function log($level, $message, array $context = array())
+    public function log($level, $message, array $context = []): void
     {
         $this->logs[] = [
             'level' => $level,
@@ -30,7 +20,7 @@ class InMemoryLogger extends AbstractLogger
         ];
     }
 
-    public function getLogs()
+    public function getLogs(): array
     {
         return $this->logs;
     }

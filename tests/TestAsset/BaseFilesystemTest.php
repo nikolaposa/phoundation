@@ -1,12 +1,4 @@
 <?php
-/**
- * This file is part of the Phoundation package.
- *
- * Copyright (c) Nikola Posa
- *
- * For full copyright and license information, please refer to the LICENSE file,
- * located at the package root folder.
- */
 
 declare(strict_types=1);
 
@@ -16,29 +8,24 @@ use PHPUnit\Framework\TestCase;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
-/**
- * @author Nikola Posa <posa.nikola@gmail.com>
- */
 abstract class BaseFilesystemTest extends TestCase
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $directory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->createTestDirectory();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->removeTestDirectory();
     }
 
-    final protected function createTestDirectory()
+    final protected function createTestDirectory(): void
     {
-        $this->directory = sys_get_temp_dir() . '/phoundation_' . uniqid();
+        $this->directory = sys_get_temp_dir() . '/' . uniqid('phoundation', true);
 
         if (!is_dir($this->directory)) {
             if (false === @mkdir($this->directory, 0777, true) && !is_dir($this->directory)) {
@@ -47,7 +34,7 @@ abstract class BaseFilesystemTest extends TestCase
         }
     }
 
-    final protected function removeTestDirectory()
+    final protected function removeTestDirectory(): void
     {
         if (!is_dir($this->directory)) {
             return;

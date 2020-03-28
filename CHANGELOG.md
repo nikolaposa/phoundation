@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased][link-unreleased]
+
+### Changed
+- PHP 7.2 is now the minimum required version
+- Renamed `ConfigLoaderInterface` to `ConfigLoader`
+- Renamed `Di\DiContainerFactoryInterface` to `DependencyInjection\DiContainerFactory`
+- Moved `Bootstrap` class into top-level (`Phoundation`) namespace
+- Renamed `ConfigLoader->_invoke()` to `ConfigLoader->load()`
+- Renamed `DiContainerFactory->_invoke()` to `DiContainerFactory->create()`
+- `ConfigLoader` returns internal `array` type
+
+### Removed
+- `Config` class
+- Dropped out-of-the-box support for most of DI Containers to encourage custom 
+implementations in user land code
+
 ## 2.0.0 - 2017-06-25
 
 ### Changed
@@ -22,4 +38,4 @@ All notable changes to this project will be documented in this file.
 - `Interop\Container\ContainerInterface` as return type declaration in DI container factories
 
 
-[Unreleased]: https://github.com/nikolaposa/phoundation/compare/2.0.0...HEAD
+[link-unreleased]: https://github.com/nikolaposa/phoundation/compare/2.0.0...HEAD

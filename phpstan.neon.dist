@@ -1,0 +1,11 @@
+parameters:
+    level: 7
+    paths:
+        - src
+        - tests
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '~Phoundation\\Config\\FileConfigLoader constructor expects array~'
+
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon

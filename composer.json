@@ -1,37 +1,38 @@
 {
     "name": "nikolaposa/phoundation",
-    "description": "Framework-agnostic basis for bootstrapping PHP applications",
+    "description": "Facilitates the routine step of bootstrapping PHP applications.",
     "type": "library",
     "license": "MIT",
     "keywords": [
-        "application",
-        "basis",
-        "foundation",
         "bootstrap",
-        "config",
-        "di"
+        "psr-11"
     ],
     "authors": [
         {
             "name": "Nikola Poša",
             "email": "posa.nikola@gmail.com",
-            "homepage": "http://www.nikolaposa.in.rs"
+            "homepage": "https://www.nikolaposa.in.rs"
         }
     ],
+    "config": {
+        "sort-packages": true
+    },
     "require": {
-        "php": "^7.0",
-        "psr/container": "^1.0",
-        "psr/log": "^1.0"
+        "php": "^7.2",
+        "psr/container": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7 || ^6.0",
-        "friendsofphp/php-cs-fixer": "^2.0",
-        "zendframework/zend-servicemanager": "^3.0",
-        "aura/di": "^3.0",
-        "xtreamwayz/pimple-container-interop": "^1.0",
-        "filp/whoops": "^2.0"
+        "friendsofphp/php-cs-fixer": "^2.1",
+        "laminas/laminas-servicemanager": "^3.4",
+        "phpstan/phpstan": "^0.12.18",
+        "phpstan/phpstan-phpunit": "^0.12.6",
+        "phpunit/phpunit": "^8.0",
+        "psr/log": "^1.1"
     },
     "autoload": {
+        "files": [
+            "src/functions/merge-config.php"
+        ],
         "psr-4": {
             "Phoundation\\": "src/"
         }
@@ -42,18 +43,16 @@
         }
     },
     "suggest": {
-        "zendframework/zend-servicemanager": "^3.0 to use Zend Service Manager for dependency injection",
-        "aura/di": "^3.0 to use Aura.Di for dependency injection",
-        "xtreamwayz/pimple-container-interop": "^1.0 to use Pimple for dependency injection",
-        "filp/whoops": "^2.0 to use the Whoops error handler"
+        "laminas/laminas-servicemanager": "In order to use LaminasServiceManagerFactory"
     },
     "scripts": {
         "test": "phpunit --colors=always",
-        "cs-fix": "php-cs-fixer fix --config=.php_cs"
+        "cs-fix": "php-cs-fixer fix --config=.php_cs",
+        "stan": "phpstan analyse"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "3.0.x-dev"
         }
     }
 }
