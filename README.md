@@ -87,7 +87,7 @@ Load bootstrap in your web application root (for example `public/index.php`):
 
 ```php
 
-/* @var $diContainer \Psr\Container\ContainerInterface */
+/* @var \Psr\Container\ContainerInterface $diContainer */
 $diContainer = require  __DIR__ . '/../src/bootstrap.php';
 
 $diContainer->get('My\\Web\\Application')->run();
