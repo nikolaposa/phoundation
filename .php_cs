@@ -11,7 +11,6 @@ return PhpCsFixer\Config::create()
         'array_syntax' => ['syntax' => 'short'],
         'declare_strict_types' => true,
         'return_type_declaration' => ['space_before' => 'none'],
-        'phpdoc_line_span' => ['property' => 'single'],
     ])
     ->setRiskyAllowed(true)
     ->setFinder($finder)
