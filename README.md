@@ -104,13 +104,13 @@ Released under MIT License - see the [License File](LICENSE) for details.
 
 
 [ico-version]: https://poser.pugx.org/nikolaposa/phoundation/v/stable
-[ico-build]: https://travis-ci.com/nikolaposa/phoundation.svg?branch=master
+[ico-build]: https://github.com/nikolaposa/phoundation/workflows/Build/badge.svg?branch=master
 [ico-code-coverage]: https://scrutinizer-ci.com/g/nikolaposa/phoundation/badges/coverage.png?b=master
 [ico-code-quality]: https://scrutinizer-ci.com/g/nikolaposa/phoundation/badges/quality-score.png?b=master
 [ico-pds]: https://img.shields.io/badge/pds-skeleton-blue.svg
 
 [link-packagist]: https://packagist.org/packages/nikolaposa/phoundation
-[link-build]: https://travis-ci.com/nikolaposa/phoundation
+[link-build]: https://github.com/nikolaposa/phoundation/actions
 [link-code-coverage]: https://scrutinizer-ci.com/g/nikolaposa/phoundation/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/nikolaposa/phoundation
 [link-pds]: https://github.com/php-pds/skeleton
